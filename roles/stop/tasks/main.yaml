@@ -1,0 +1,10 @@
+- name: "Populate service facts"
+  ansible.builtin.service_facts:
+
+- name: disable services on boot
+  ansible.builtin.service:
+     name: "{{ item }}"
+     enabled: false
+     state: stopped
+  when: "item in services"
+  with_items: '{{ services_on_boot }}'

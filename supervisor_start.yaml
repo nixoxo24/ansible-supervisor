@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: true
+  gather_facts: yes
+  vars:
+     services_on_boot:
+       - "supervisord.service"
+  roles:
+    - start
+    - status
